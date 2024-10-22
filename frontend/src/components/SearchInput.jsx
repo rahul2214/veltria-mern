@@ -8,8 +8,8 @@ const EmployeeSearchInput = ({ onSearch }) => {
   const handleSubmit = (e) => {
     e.preventDefault();
     if (!search) return;
-    if (search.length < 3) {
-      return toast.error("Search term must be at least 3 characters long");
+    if (search.length < 2) {
+      return toast.error("Search term must be at least 2 characters long");
     }
 
     onSearch(search.toLowerCase());
@@ -19,7 +19,7 @@ const EmployeeSearchInput = ({ onSearch }) => {
     <form onSubmit={handleSubmit} className='flex items-center gap-2'>
       <input
         type='text'
-        placeholder='Search…'
+        placeholder='search job role or location'
         className='input input-bordered rounded-full'
         value={search}
         onChange={(e) => setSearch(e.target.value)}

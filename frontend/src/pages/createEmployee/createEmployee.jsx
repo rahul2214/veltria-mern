@@ -1,35 +1,25 @@
-// src/components/CreateEmployee.js
 import { useState } from 'react';
 import useCreateEmployee from '../../hooks/useCreateEmployee';
-import NavBar from '../navBar/NavBar';
-import GenderCheckBox from './GenderCheckBox';
+// import NavBar from '../navBar/NavBar';
+import MainNavbar from '../mainPage/navbar';
+import './createEmployee.css';  // Import the CSS file
 
 const CreateEmployee = () => {
     const [inputs, setInputs] = useState({
         name: '',
         email: '',
         mobileNo: '',
-        designation: '',
-        gender: '',
-        course: [],
+        companyname: '',
+        jobrole: '',
+        noofvacancies: '',
+        location: '',
+        jobdescription: '',
+        linkedin: '',
+        domain: '',
+        joburl: '',
     });
 
     const { loading, createEmployee } = useCreateEmployee();
-
-    const handleCheckboxChange = (gender) => {
-        setInputs({ ...inputs, gender });
-    };
-
-    const handleCourseChange = (e) => {
-        const { value, checked } = e.target;
-        setInputs((prevState) => {
-            if (checked) {
-                return { ...prevState, course: [...prevState.course, value] };
-            } else {
-                return { ...prevState, course: prevState.course.filter((course) => course !== value) };
-            }
-        });
-    };
 
     const handleSubmit = async (e) => {
         e.preventDefault();
@@ -38,119 +28,142 @@ const CreateEmployee = () => {
 
     return (
         <div>
-            <NavBar />
-            <div className='h-screen flex items-center justify-center '>
-                <div className='flex flex-col items-center justify-center min-w-96 mx-auto bg-white rounded-lg '>
-                    <div className='w-full p-6 rounded-lg shadow-md bg-gray-400 bg-clip-padding backdrop-filter backdrop-blur-lg bg-opacity-0'>
-                        <h1 className='text-3xl font-semibold text-center text-gray-300'>
-                            Create Employee
-                        </h1>
-                        <form onSubmit={handleSubmit}>
-                            <div>
-                                <label className='label p-2'>
-                                    <span className='text-black label-text'>Name</span>
-                                </label>
-                                <input
-                                    type="text"
-                                    placeholder='Enter Full Name'
-                                    className='w-full input input-bordered h-10'
-                                    value={inputs.name}
-                                    onChange={(e) => setInputs({ ...inputs, name: e.target.value })}
-                                />
-                            </div>
-                            <div>
-                                <label className='label p-2'>
-                                    <span className='text-black label-text'>Email</span>
-                                </label>
-                                <input
-                                    type="email"
-                                    placeholder='Enter Email'
-                                    className='w-full input input-bordered h-10'
-                                    value={inputs.email}
-                                    onChange={(e) => setInputs({ ...inputs, email: e.target.value })}
-                                />
-                            </div>
-                            <div>
-                                <label className='label p-2'>
-                                    <span className='text-black label-text'>Mobile Number</span>
-                                </label>
-                                <input
-                                    type="number"
-                                    placeholder='Enter Phone Number'
-                                    className='w-full input input-bordered h-10'
-                                    value={inputs.mobileNo}
-                                    onChange={(e) => setInputs({ ...inputs, mobileNo: e.target.value })}
-                                />
-                            </div>
-                            <div>
-                                <label className='label p-2'>
-                                    <span className='text-black label-text'>Designation</span>
-                                </label>
-                                <select
-                                    className="form-select w-full h-10 input-bordered"
-                                    value={inputs.designation}
-                                    onChange={(e) => setInputs({ ...inputs, designation: e.target.value })}
-                                >
-                                    <option value="">Select</option>
-                                    <option value="HR">HR</option>
-                                    <option value="Manager">Manager</option>
-                                    <option value="Sales">Sales</option>
-                                </select>
-                            </div>
-                            <div>
-                                <label className='label p-2'>
-                                    <span className='text-black label-text'>Gender</span>
-                                </label>
-                                <GenderCheckBox
-                                    onCheckboxChange={handleCheckboxChange}
-                                    selectedGender={inputs.gender}
-                                />
-                            </div>
-                            <div className="form-control">
-                                <label>
-                                    <span className="label-text text-black">Courses</span>
-                                </label>
-                                <div>
-                                    <label className="label-text text-black">
-                                        <input
-                                            type="checkbox"
-                                            className="checkbox border-slate-900"
-                                            value="MCA"
-                                            checked={inputs.course.includes('MCA')}
-                                            onChange={handleCourseChange}
-                                        /> MCA
-                                    </label>
-                                </div>
-                                <div>
-                                    <label className="label-text text-black">
-                                        <input
-                                            type="checkbox"
-                                            className="checkbox border-slate-900"
-                                            value="BCA"
-                                            checked={inputs.course.includes('BCA')}
-                                            onChange={handleCourseChange}
-                                        /> BCA
-                                    </label>
-                                </div>
-                                <div>
-                                    <label className="label-text text-black">
-                                        <input
-                                            type="checkbox"
-                                            className="checkbox border-slate-900"
-                                            value="BSC"
-                                            checked={inputs.course.includes('BSC')}
-                                            onChange={handleCourseChange}
-                                        /> BSC
-                                    </label>
-                                </div>
-                            </div>
-                            <div>
-                                <button className="btn btn-block btn-sm mt-2" disabled={loading}>
-                                    {loading ? 'Submitting...' : 'Submit'}
-                                </button>
-                            </div>
-                        </form>
-                    </div>
+            {/* <NavBar /> */}
+            <MainNavbar />
+
+            <div className='container'>
+                <div className='form-wrapper'>
+                    <h1 className='form-header'>Create Job</h1>
+                    <form onSubmit={handleSubmit}>
+                        <div className='input-group'>
+                            <label>Name</label>
+                            <input
+                                type="text"
+                                placeholder='Enter Full Name'
+                                value={inputs.name}
+                                required
+                                onChange={(e) => setInputs({ ...inputs, name: e.target.value })}
+                            />
+                        </div>
+
+                        <div className='input-group'>
+                            <label>Company Name</label>
+                            <input
+                                type="text"
+                                placeholder='Enter Company Name'
+                                value={inputs.companyname}
+                                required
+                                onChange={(e) => setInputs({ ...inputs, companyname: e.target.value })}
+                            />
+                        </div>
+
+                        <div className='input-group'>
+                            <label>Job Role</label>
+                            <input
+                                type="text"
+                                required
+                                placeholder='Enter Job Role'
+                                value={inputs.jobrole}
+                                onChange={(e) => setInputs({ ...inputs, jobrole: e.target.value })}
+                            />
+                        </div>
+
+                        <div className='input-group'>
+                            <label>Location</label>
+                            <input
+                                type="text"
+                                required
+                                placeholder='Enter Location'
+                                value={inputs.location}
+                                onChange={(e) => setInputs({ ...inputs, location: e.target.value })}
+                            />
+                        </div>
+
+                        <div className='input-group'>
+                            <label>Job Description</label>
+                            <input
+                                type="text"
+                                placeholder='Enter Job Description'
+                                value={inputs.jobdescription}
+                                required
+                                onChange={(e) => setInputs({ ...inputs, jobdescription: e.target.value })}
+                            />
+                        </div>
+
+                        <div className='input-group'>
+                            <label>LinkedIn</label>
+                            <input
+                                type="url"
+                                placeholder='Enter LinkedIn URL'
+                                value={inputs.linkedin}
+                                onChange={(e) => setInputs({ ...inputs, linkedin: e.target.value })}
+                            />
+                        </div>
+
+                        <div className='input-group'>
+                            <label>Email</label>
+                            <input
+                                type="email"
+                                placeholder='Enter Email'
+                                value={inputs.email}
+                                onChange={(e) => setInputs({ ...inputs, email: e.target.value })}
+                            />
+                        </div>
+
+                        <div className='input-group'>
+                            <label>Mobile Number</label>
+                            <input
+                                type="number"
+                                placeholder='Enter Phone Number'
+                                value={inputs.mobileNo}
+                                onChange={(e) => setInputs({ ...inputs, mobileNo: e.target.value })}
+                            />
+                        </div>
+
+                        <div className='input-group'>
+                            <label>No of Vacancies</label>
+                            <input
+                                type="number"
+                                placeholder='Enter No of Vacancies'
+                                required
+                                value={inputs.noofvacancies}
+                                onChange={(e) => setInputs({ ...inputs, noofvacancies: e.target.value })}
+                            />
+                        </div>
+
+                        <div className='input-group'>
+                            <label>Job Domain</label>
+                            <select
+                                value={inputs.domain}
+                                required
+                                onChange={(e) => setInputs({ ...inputs, domain: e.target.value })}
+                            >
+                                <option value="">Select</option>
+                                <option value="IT">IT</option>
+                                <option value="Software">Software</option>
+                                <option value="Hardware">Hardware</option>
+                                <option value="Pharma">Pharma</option>
+                                <option value="Business">Business</option>
+                                <option value="Govt">Govt Job</option>
+                                <option value="Others">Others</option>
+                            </select>
+                        </div>
+                        <div className='input-group'>
+                            <label>Job URL</label>
+                            <input
+                                type="url"
+                                placeholder='Enter Job URL'
+                                value={inputs.joburl}
+                                onChange={(e) => setInputs({ ...inputs, joburl: e.target.value })}
+                            />
+                        </div>
+
+                        <div>
+                            <button className="submit-button" disabled={loading}>
+                                {loading ? 'Submitting...' : 'Submit'}
+                            </button>
+                        </div>
+                    </form>
                 </div>
             </div>
         </div>

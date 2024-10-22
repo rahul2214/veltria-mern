@@ -3,6 +3,7 @@ import express from "express";
 import dotenv from "dotenv";
 import authRoutes from "./routes/authroute.js";
 import employeRoutes from "./routes/employeeroute.js";
+import workshopRoutes from "./routes/workshoproute.js";
 import cookieParser from "cookie-parser";
 import connectTOMongoDB from "./db/connectToMongoDB.js";
 const app = express();
@@ -15,8 +16,9 @@ const __dirname = path.resolve();
 
 app.use("/api/auth",authRoutes); 
 app.use("/api/employee", employeRoutes); 
+app.use("/api/workshop", workshopRoutes); 
 
-app.use(express.static(path.join(__dirname,"frontend/dist")));
+app.use(express.static(path.join(__dirname,"/frontend/dist")));
 
 app.get("*",(req,res)=> {
     res.sendFile(path.join(__dirname,"frontend","dist","index.html"));

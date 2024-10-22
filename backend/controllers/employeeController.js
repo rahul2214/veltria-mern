@@ -1,68 +1,77 @@
-import Employee from "../models/employeeModel.js";
+import Job from "../models/employeeModel.js";
 
 export const employee = async (req, res) => {
     try {
-        const { name, email, mobileNo, gender, designation, course } = req.body;
+        const { name, companyname, jobrole, noofvacancies, location, domain, jobdescription, email, mobileNo, linkedin, joburl } = req.body;
+
         
-        const Email = await Employee.findOne({ email });
-        if (Email) {
-            return res.status(400).json({ error: 'Email already exists' });
-        }
-       
-        const newEmployee = new Employee({
-            name,
-            email,
-            mobileNo,
-            gender,
-            designation,
-            course
+
+        const newJob = new Job({
+            name, companyname, jobrole, noofvacancies, location, domain, jobdescription, email, mobileNo, linkedin, joburl
         });
 
 
-        if (newEmployee) {
-            await newEmployee.save();
+        if (newJob) {
+            await newJob.save();
             res.status(201).json({
-                _id: newEmployee._id,
-                name: newEmployee.name,
-                mobileNo:newEmployee.mobileNo,
-                email: newEmployee.email,
-                gender: newEmployee.gender,
-                designation:newEmployee.designation,
-                course: newEmployee.course,
+                _id: newJob._id,
+                name: newJob.name,
+                mobileNo: newJob.mobileNo,
+                email: newJob.email,
+                companyname: newJob.companyname,
+                jobrole: newJob.jobrole,
+                noofvacancies: newJob.noofvacancies,
+                location: newJob.location,
+                domain: newJob.domain,
+                jobdescription: newJob.jobdescription,
+                linkedin: newJob.linkedin,
+                joburl: newJob.joburl,
+
+
             });
         } else {
-            res.status(400).json({ error: 'Invalid employee data' });
+            res.status(400).json({ error: 'Invalid job data' });
         }
 
     } catch (error) {
-        console.log("Error in employee controller", error.message);
+        console.log("Error in job controller", error.message);
         res.status(500).json({ error: error.message });
     }
-    console.log("Created New employee ");
+    console.log("Created New job ");
 };
 export const getAllEmployees = async (req, res) => {
     try {
-        const employees = await Employee.find();
+        const employees = await Job.find();
         res.status(200).json(employees);
     } catch (error) {
         res.status(500).json({ error: error.message });
     }
 };
 
+export const getAllJobs = async (req, res) => {
+    try {
+        const employees = await Job.find();
+        res.status(200).json(employees);
+    } catch (error) {
+        res.status(500).json({ error: error.message });
+    }
+};
+
+
 export const deleteEmployee = async (req, res) => {
     try {
         const { id } = req.params;
 
         // Find and delete the employee
-        const employee = await Employee.findByIdAndDelete(id);
+        const employee = await Job.findByIdAndDelete(id);
 
         if (!employee) {
-            return res.status(404).json({ error: 'Employee not found' });
+            return res.status(404).json({ error: 'Job not found' });
         }
 
-        res.status(200).json({ message: 'Employee deleted successfully' });
+        res.status(200).json({ message: 'Job deleted successfully' });
     } catch (error) {
-        console.log("Error in delete employee controller", error.message);
+        console.log("Error in delete Job controller", error.message);
         res.status(500).json({ error: error.message });
     }
 };
@@ -72,15 +81,15 @@ export const updateEmployee = async (req, res) => {
         const updateData = req.body;
 
         // Find and update the employee
-        const employee = await Employee.findByIdAndUpdate(id, updateData, { new: true });
+        const employee = await Job.findByIdAndUpdate(id, updateData, { new: true });
 
         if (!employee) {
-            return res.status(404).json({ error: 'Employee not found' });
+            return res.status(404).json({ error: 'Job not found' });
         }
 
         res.status(200).json(employee);
     } catch (error) {
-        console.log("Error in update employee controller", error.message);
+        console.log("Error in update job controller", error.message);
         res.status(500).json({ error: error.message });
     }
 };

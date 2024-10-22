@@ -1,34 +1,54 @@
 import mongoose from "mongoose";
-const employeeSchema = new mongoose.Schema({
+const jobSchema = new mongoose.Schema({
     name: {
+        type: String,
+        required: true,
+    },
+    companyname: {
+        type: String,
+        required: true,
+    },
+    jobrole: {
         type: String,
         required: true,
     },
     email: {
         type: String,
-        required: true,
-        unique: true,
+        // required: true,
+        
     },
-    mobileNo: {
+    noofvacancies: {
         type: Number,
         required: true,
     },
+    location: {
+        type: String,
+        required: true,
+    },
+    mobileNo: {
+        type: Number,
+        // required: true,
+    },
    
-    designation: {
+    domain: {
         type: String,
         required: true,
-        enum: ['HR','Manager','Sales'],
+        enum: ['IT','Software','Hardware','Pharma','Business','Others','Govt'],
     },
-    gender: {
+    jobdescription: {
         type: String,
         required: true,
-        enum: ['male', 'female'],
     },
-    course: {
-        type: Array,
-        required: true,
+    linkedin: {
+        type: String,
+        // required: true,
+    },
+    joburl: {
+        type: String,
+        // required: true,
     },
   
+  
 }, { timestamps: true });
-const Employee = mongoose.model("Employee", employeeSchema);
-export default Employee;
+const Job = mongoose.model("Job", jobSchema);
+export default Job;

@@ -19,7 +19,7 @@ const jobSchema = new mongoose.Schema({
     },
     noofvacancies: {
         type: Number,
-        required: true,
+        // required: true,
     },
     location: {
         type: String,

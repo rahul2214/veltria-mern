@@ -31,8 +31,8 @@ const useCreateEmployee = () => {
     return { loading, createEmployee };
 };
 
-function handleInputErrors({ name, companyname, jobrole, noofvacancies, location, domain, jobdescription}) {
-    if (!name ||  !companyname || !jobrole || !noofvacancies || !location || !domain || !jobdescription ) {
+function handleInputErrors({ name, companyname, jobrole, location, domain, jobdescription}) {
+    if (!name ||  !companyname || !jobrole || !location || !domain || !jobdescription ) {
         toast.error('Please fill in all fields.');
         return false;
     }

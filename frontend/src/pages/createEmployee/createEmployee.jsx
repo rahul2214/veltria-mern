@@ -125,7 +125,7 @@ const CreateEmployee = () => {
                             <input
                                 type="number"
                                 placeholder='Enter No of Vacancies'
-                                required
+                                
                                 value={inputs.noofvacancies}
                                 onChange={(e) => setInputs({ ...inputs, noofvacancies: e.target.value })}
                             />

@@ -20,7 +20,7 @@ const EmployeeSearchInput = ({ onSearch }) => {
       <input
         type='text'
         placeholder='search job role or location'
-        className='input input-bordered rounded-full'
+        className='input input-bordered rounded-full bg-white '
         value={search}
         onChange={(e) => setSearch(e.target.value)}
       />

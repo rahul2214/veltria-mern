@@ -38,18 +38,7 @@ const EditEmployeeForm = ({ employee, onClose }) => {
                 <div className="modal-content">
                     <h2 className="modal-header">Edit Job</h2>
                     <form onSubmit={handleSubmit}>
-                        <div>
-                            <label className="label">
-                                <span className="text-black label-text">Name</span>
-                            </label>
-                            <input
-                                type="text"
-                                name="name"
-                                className="input-field"
-                                value={formData.name}
-                                onChange={handleChange}
-                            />
-                        </div>
+                       
                         <div>
                             <label className="label">
                                 <span className="text-black label-text">Company Name</span>

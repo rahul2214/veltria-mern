@@ -7,11 +7,15 @@ import { Toaster } from 'react-hot-toast';
 import { useAuthContext } from './context/Authcontext';
 import CreateEmployee from './pages/createEmployee/createEmployee';
 import EmployeeList from './pages/listEmployees.jsx/ListEmployees';
-import HomePage from './pages/mainPage/homePage';
+import HomePage from './pages/mainPage/homePage/index';
 import Jobs from './pages/mainPage/careers';
 import WorkShopList from './pages/listWorkShop/listWorkShop';
 import CreateWorkShop from './pages/createWorkShop/createWorkShop';
 import HomePageWorkShopList from './pages/mainPage/workShops';
+import Services from './pages/mainPage/services/index';
+import AboutUs from './pages/mainPage/aboutus/index';
+import Contact from './pages/mainPage/contact/index';
+import Blogs from './pages/mainPage/blogs';
 
 function App() {
   const { authUser } = useAuthContext();
@@ -31,6 +35,14 @@ function App() {
         <Route path='/signup' element={authUser ? < Navigate to='/dashboard'/> : <SignUp />} />
         <Route path='/' element={<HomePage />} />
         <Route path='/jobs' element={<Jobs />} />
+        <Route path='/services' element={<Services />} />
+        <Route path='/aboutus' element={<AboutUs />} />
+        <Route path='/aboutus' element={<AboutUs />} />
+        <Route path='/contact' element={<Contact />} />
+
+        <Route path='/blog' element={<Blogs />} />
+
+
         <Route path='/workshops' element={<HomePageWorkShopList />} />
 
 

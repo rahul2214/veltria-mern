@@ -5,8 +5,8 @@ import toast from 'react-hot-toast';
 const useCreateEmployee = () => {
     const [loading, setLoading] = useState(false);
 
-    const createEmployee = async ({ name, companyname, jobrole, noofvacancies, location, domain, jobdescription, email, mobileNo, linkedin, joburl }) => {
-        const success = handleInputErrors({ name, companyname, jobrole, noofvacancies, location, domain, jobdescription, email, mobileNo, linkedin, joburl });
+    const createEmployee = async ({ companyname, jobrole, noofvacancies, location, domain, jobdescription, email, mobileNo, linkedin, joburl }) => {
+        const success = handleInputErrors({  companyname, jobrole, noofvacancies, location, domain, jobdescription, email, mobileNo, linkedin, joburl });
         if (!success) return;
 
         setLoading(true);
@@ -14,7 +14,7 @@ const useCreateEmployee = () => {
             const res = await fetch('/api/employee/employee', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify({ name, companyname, jobrole, noofvacancies, location, domain, jobdescription, email, mobileNo, linkedin, joburl }),
+                body: JSON.stringify({ companyname, jobrole, noofvacancies, location, domain, jobdescription, email, mobileNo, linkedin, joburl }),
             });
             const data = await res.json();
             if (data.error) {
@@ -31,8 +31,8 @@ const useCreateEmployee = () => {
     return { loading, createEmployee };
 };
 
-function handleInputErrors({ name, companyname, jobrole, location, domain, jobdescription}) {
-    if (!name ||  !companyname || !jobrole || !location || !domain || !jobdescription ) {
+function handleInputErrors({ companyname, jobrole, location, domain, jobdescription}) {
+    if ( !companyname || !jobrole || !location || !domain || !jobdescription ) {
         toast.error('Please fill in all fields.');
         return false;
     }

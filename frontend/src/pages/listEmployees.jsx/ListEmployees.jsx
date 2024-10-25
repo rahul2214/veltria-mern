@@ -24,7 +24,7 @@ const EmployeeList = () => {
 
         // Filter by search term
         filteredList = filteredList.filter(employee =>
-            employee.name.toLowerCase().includes(searchTerm.toLowerCase()) || employee.location.toLowerCase().includes(searchTerm.toLowerCase())
+            employee.location.toLowerCase().includes(searchTerm.toLowerCase())
 
         );
 
@@ -84,23 +84,23 @@ const EmployeeList = () => {
             <div className="">
                 <div className="w-full p-6 rounded-lg shadow-md bg-gray-400 bg-clip-padding backdrop-filter backdrop-blur-lg bg-opacity-0">
                     <div className="flex justify-between items-center">
-                        <h1 className="text-3xl font-semibold text-gray-300">Jobs List</h1>
+                        <h1 className="text-3xl font-semibold text-gray-700">Jobs List</h1>
                         <EmployeeSearchInput onSearch={setSearchTerm} />
                     </div>
                     <br />
                     <div className="fetch flex justify-between items-center">
-                        <h1 className="text-center text-gray-300">Total Jobs: {totalEmployees}</h1>
+                        <h1 className="text-center text-gray-700">Total Jobs: {totalEmployees}</h1>
                         <span>
                             <button onClick={handleCreateEmployee} className="bg-blue-500 text-white px-4 py-2 rounded">Post Job</button>
                         </span>
                     </div>
                     <div className="flex justify-between items-center mt-4 mb-2">
-                        <label className="text-gray-300">
+                        <label className="text-gray-700">
                             Sort By:
                             <select
                                 value={sortField}
                                 onChange={(e) => setSortField(e.target.value)}
-                                className="ml-2 p-2 "
+                                className="ml-2 p-2 bg-white border"
                             >
                                 <option value="">Select Field</option>
                                 <option value="name">Name</option>
@@ -111,12 +111,12 @@ const EmployeeList = () => {
                         
 
                         {/* Domain Filter */}
-                        <label className="text-gray-300 ml-4">
+                        <label className="text-gray-700 ml-4">
                             Filter by Domain:
                             <select
                                 value={selectedDomain}
                                 onChange={(e) => setSelectedDomain(e.target.value)}
-                                className="ml-2 p-2"
+                                className="ml-2 p-2 bg-white border"
                             >
                                 <option value="">All Domains</option>
                                 {uniqueDomains.map((domain) => (
@@ -130,7 +130,6 @@ const EmployeeList = () => {
                     <table className="min-w-full bg-white">
                         <thead>
                             <tr>
-                                <th className="w-1/4 px-4 py-2 text-black">Name</th>
                                 <th className="w-1/4 px-4 py-2 text-black">Company Name</th>
                                 <th className="w-1/4 px-4 py-2 text-black">Job Domain</th>
                                 <th className="w-1/4 px-4 py-2 text-black">Job role</th>
@@ -147,7 +146,6 @@ const EmployeeList = () => {
                         <tbody>
                             {sortedEmployees.map((employee) => (
                                 <tr key={employee._id}>
-                                    <td className="border px-4 py-2 text-black">{employee.name}</td>
                                     <td className="border px-4 py-2 text-black">{employee.companyname}</td>
                                     <td className="border px-4 py-2 text-black">{employee.domain}</td>
                                     <td className="border px-4 py-2 text-black">  {employee.jobrole ? employee.jobrole : "N/A"}</td>

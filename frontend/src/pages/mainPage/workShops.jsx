@@ -1,6 +1,6 @@
 import { useState, useMemo } from 'react';
 import useFetchWorkShop from '../../hooks/useFetchWorkShop';
-import MainNavbar from './navbar';
+import MainNavbar from "./navbar/index";
 import WorkShopSearchInput from '../../components/SearchWorkShoop';
 
 const HomePageWorkShopList = () => {

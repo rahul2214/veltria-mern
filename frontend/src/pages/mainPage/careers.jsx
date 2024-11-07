@@ -9,8 +9,8 @@ import Footer from './footer';
 const Jobs = () => {
     const { jobs, totalJobs, loading, error } = useFetchEmployees();
     const [searchTerm, setSearchTerm] = useState("");
-    const [sortField, ] = useState("createdAt");
-    const [sortOrder, ] = useState("asc");
+    const [sortField] = useState("createdAt");
+    const [sortOrder] = useState("asc");
     const [selectedDomain, setSelectedDomain] = useState("");
     const navigate = useNavigate();
 
@@ -74,22 +74,22 @@ const Jobs = () => {
                                 {uniqueDomains.map(domain => <option key={domain} value={domain}>{domain}</option>)}
                             </select>
                         </label>
-                    
                     </div>
 
                     {sortedEmployees.length > 0 ? (
                         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
                             {sortedEmployees.map(employee => (
-                                <div key={employee._id} className="bg-white p-4 rounded-lg shadow-md hover:shadow-lg cursor-pointer" onClick={() => handleJobClick(employee)}>
+                                <div key={employee._id} className="bg-white p-4 rounded-lg shadow-md hover:shadow-lg cursor-pointer">
                                     <h2 className="text-xl font-bold mb-2 text-gray-800 text-center">{employee.companyname}</h2>
                                     <p className="text-gray-600"><strong>Job Role: </strong>{employee.jobrole}</p>
-                                    {/* <p className="text-gray-600"><strong>No of Vacancies: </strong>{employee.noofvacancies || "N/A"}</p> */}
                                     <p className="text-gray-600"><strong>Location: </strong>{employee.location || "N/A"}</p>
-                                    {/* <p className="text-gray-600"><strong>Email: </strong><a href={`mailto:${employee.email}`} className="text-blue-500 hover:underline">{employee.email || "N/A"}</a></p> */}
-                                    {/* <p className="text-gray-600"><strong>Mobile: </strong><a href={`tel:${employee.mobileNo}`} className="text-blue-500 hover:underline">{employee.mobileNo || "N/A"}</a></p> */}
-                                    {/* <p className="text-gray-600"><strong>Job Description: </strong>{employee.jobdescription}</p> */}
-                                    {/* <p className="text-gray-600"><strong>Job Url: </strong><a href={employee.joburl} className="text-blue-500 hover:underline">{employee.joburl || "N/A"}</a></p> */}
                                     <p className="text-gray-600 mt-2"><strong>Posted On: </strong>{new Date(employee.createdAt).toLocaleDateString()}</p>
+                                    <button
+                                        onClick={() => handleJobClick(employee)}
+                                        className="mt-4 bg-blue-500 text-white py-2 px-4 rounded hover:bg-blue-600 transition duration-200"
+                                    >
+                                        Know More
+                                    </button>
                                 </div>
                             ))}
                         </div>

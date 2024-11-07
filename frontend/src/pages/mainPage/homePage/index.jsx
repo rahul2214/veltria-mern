@@ -11,7 +11,7 @@ function HomePage() {
                 <div className="hero-main-content">
                     <h1>Innovate.<br />Adapt. Succeed.</h1>
                     <p>Veltria provides an effective and powerful <br /> way to build your projects</p>
-                    <a to="/contact" className="main-btn-primary">Get Started</a>
+                    <a href="/contact" className="main-btn-primary">Get Started</a>
 
                     <div className="features">
                         <div className="feature">
@@ -61,7 +61,7 @@ function HomePage() {
                                 <p>Better Collaboration</p>
                         </div>
                     </div>
-                    <a href="contact.html" className="btn-primary">Get Started</a>
+                    <a href="/contact" className="main-btn-primary">Get Started</a>
                 </div>
 
             </section>
@@ -112,7 +112,7 @@ function HomePage() {
                     <h2>About Veltria</h2>
                     <p>We specialize in web and app development, training, trading, and digital marketing services to elevate
                         your business.</p>
-                    <a href="about.html">Learn More</a>
+                    <a href="/aboutus">Learn More</a>
                 </div>
                 <div className="images">
                     <img src="https://cdn.glitch.global/02a02e56-c6dd-4845-b7d3-20bc8ccecb0c/images%20(1).jpg?v=1726478539304"

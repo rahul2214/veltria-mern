@@ -11,7 +11,7 @@ function Services() {
                 <h1>Professional Web and <br/> App Development <br/> Services</h1>
                     <p>Offering training, teaching, and digital marketing solutions.</p>
                     <br/>
-                        <a href="contact.html">Get Started</a>
+                        <a href="/contact">Get Started</a>
                         <br/>
                             <div className="services-section">
                                 <div className="service-card">

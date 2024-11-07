@@ -16,6 +16,7 @@ import Services from './pages/mainPage/services/index';
 import AboutUs from './pages/mainPage/aboutus/index';
 import Contact from './pages/mainPage/contact/index';
 import Blogs from './pages/mainPage/blogs';
+import JobDetails from './pages/mainPage/jobdetails';
 
 function App() {
   const { authUser } = useAuthContext();
@@ -42,8 +43,8 @@ function App() {
 
         <Route path='/blog' element={<Blogs />} />
 
-
-        <Route path='/workshops' element={<HomePageWorkShopList />} />
+        <Route path="/job-details/:id" element={<JobDetails />} />        
+                <Route path='/workshops' element={<HomePageWorkShopList />} />
 
 
           

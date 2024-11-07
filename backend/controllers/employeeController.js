@@ -58,6 +58,23 @@ export const getAllJobs = async (req, res) => {
 };
 
 
+
+export const getJobDetails = async (req, res) => {
+    try {
+        const { id } = req.params;
+        const job = await Job.findById(id);
+
+        if (!job) {
+            return res.status(404).json({ success: false, message: 'Job not found' });
+        }
+
+        res.status(200).json({ success: true, data: job });
+    } catch (error) {
+        console.log("Error in getJobDetails controller", error.message);
+        res.status(500).json({ success: false, message: 'Server Error' });
+    }
+};
+
 export const deleteEmployee = async (req, res) => {
     try {
         const { id } = req.params;

@@ -2,12 +2,12 @@ import Job from "../models/employeeModel.js";
 
 export const employee = async (req, res) => {
     try {
-        const { companyname, jobrole, noofvacancies, location, domain, jobdescription, email, mobileNo, linkedin, joburl } = req.body;
+        const { companyname, jobrole, noofvacancies, location, domain, jobdescription, email, mobileNo, linkedin, joburl,jobtype } = req.body;
 
         
 
         const newJob = new Job({
-            companyname, jobrole, noofvacancies, location, domain, jobdescription, email, mobileNo, linkedin, joburl
+            companyname, jobrole, noofvacancies, location, domain, jobdescription, email, mobileNo, linkedin, joburl, jobtype
         });
 
 
@@ -26,6 +26,7 @@ export const employee = async (req, res) => {
                 jobdescription: newJob.jobdescription,
                 linkedin: newJob.linkedin,
                 joburl: newJob.joburl,
+                jobtype: newJob.jobtype,
 
 
             });

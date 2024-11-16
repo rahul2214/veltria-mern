@@ -44,6 +44,11 @@ const jobSchema = new mongoose.Schema({
         type: String,
         // required: true,
     },
+    jobtype: {
+        type: String,
+        required: true,
+        enum: ['Refferal', 'Open for All'],
+    },
   
   
 }, { timestamps: true });

@@ -38,7 +38,7 @@ const EditEmployeeForm = ({ employee, onClose }) => {
                 <div className="modal-content">
                     <h2 className="modal-header">Edit Job</h2>
                     <form onSubmit={handleSubmit}>
-                       
+
                         <div>
                             <label className="label">
                                 <span className="text-black label-text">Company Name</span>
@@ -87,6 +87,23 @@ const EditEmployeeForm = ({ employee, onClose }) => {
                                 onChange={handleChange}
                             />
                         </div>
+
+                        <div>
+                            <label className="label">
+                                <span className="text-black label-text">Job Type</span>
+                            </label>
+                            <select
+                                name="jobtype"
+                                className="select-field"
+                                value={formData.jobtype}
+                                onChange={handleChange}
+                            >
+                                <option value="">Select</option>
+                                <option value="Refferal">Refferal</option>
+                                <option value="Open for All">Open for All</option>                              
+                            </select>
+                        </div>
+
                         <div>
                             <label className="label">
                                 <span className="text-black label-text">Edit Job URL</span>

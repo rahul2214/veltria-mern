@@ -2,25 +2,26 @@
 import { useState } from 'react';
 import toast from 'react-hot-toast';
 
-const useCreateWorkShop = () => {
+const useCreateEmployee = () => {
     const [loading, setLoading] = useState(false);
 
-    const createWorkShop = async ({ name, title, agenda, hostedDate, url }) => {
-        const success = handleInputErrors({ name, title, agenda, hostedDate, url });
-        if (!success) return;
+    const createEmployee = async (inputs) => {
+        // Check for validation errors
+        const isValid = handleInputErrors(inputs);
+        if (!isValid) return; // Stop if validation fails
 
         setLoading(true);
         try {
-            const res = await fetch('/api/workshop/workshop', {
+            const res = await fetch('/api/employee/employee', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify({ name, title, agenda, hostedDate, url }),
+                body: JSON.stringify(inputs),
             });
             const data = await res.json();
             if (data.error) {
                 throw new Error(data.error);
             }
-            toast.success('work shop created successfully!');
+            toast.success('Job created successfully!');
         } catch (error) {
             toast.error(error.message);
         } finally {
@@ -28,16 +29,16 @@ const useCreateWorkShop = () => {
         }
     };
 
-    return { loading, createWorkShop };
+    return { loading, createEmployee };
 };
 
-function handleInputErrors({ name, title, agenda, hostedDate, url }) {
-    if (!name || !title || !agenda || !hostedDate || !url) {
-        toast.error('Please fill in all fields.');
+// Validation function for required fields
+function handleInputErrors({ companyname, jobrole, location, domain, jobdescription }) {
+    if (!companyname || !jobrole || !location || !domain || !jobdescription) {
+        toast.error('Please fill in all required fields.');
         return false;
     }
-
     return true;
 }
 
-export default useCreateWorkShop;
+export default useCreateEmployee;

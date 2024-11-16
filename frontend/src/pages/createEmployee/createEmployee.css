@@ -1,12 +1,8 @@
-/* src/components/CreateEmployee.css */
-
 .container {
-    /* height: 100vh;?? */
     display: flex;
     align-items: center;
     justify-content: center;
     padding: 20px;
-    
     background-color: #afed2a00;
 }
 
@@ -14,9 +10,8 @@
     background-color: white;
     padding: 20px;
     border-radius: 12px;
-        /* border: 1px solid #333; */
     width: 100%;
-    margin: 5% 0px 5% 0px;
+    margin: 5% 0px;
     max-width: 500px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
 }
@@ -41,12 +36,19 @@
 }
 
 .input-group input,
-.input-group select {
+.input-group select,
+.input-group textarea {
     width: 100%;
     padding: 10px;
     border: 1px solid #ccc;
     border-radius: 4px;
     font-size: 14px;
+}
+
+.required {
+    color: red;
+    margin-left: 4px;
+    font-weight: bold;
 }
 
 .submit-button {
@@ -64,4 +66,3 @@
 .submit-button:disabled {
     background-color: #999;
 }
-

@@ -82,6 +82,7 @@ const Jobs = () => {
                                 <div key={employee._id} className="bg-white p-4 rounded-lg shadow-md hover:shadow-lg cursor-pointer">
                                     <h2 className="text-xl font-bold mb-2 text-gray-800 text-center">{employee.companyname}</h2>
                                     <p className="text-gray-600"><strong>Job Role: </strong>{employee.jobrole}</p>
+                                    <p className="text-gray-600"><strong>Job Type: </strong>{employee.jobtype}</p>
                                     <p className="text-gray-600"><strong>Location: </strong>{employee.location || "N/A"}</p>
                                     <p className="text-gray-600 mt-2"><strong>Posted On: </strong>{new Date(employee.createdAt).toLocaleDateString()}</p>
                                     <button

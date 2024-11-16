@@ -58,35 +58,7 @@ function AboutUs() {
                             <img src="https://cdn.glitch.global/02a02e56-c6dd-4845-b7d3-20bc8ccecb0c/about2.jpg?v=1726479189792" alt="Purpose Image"/>
                         </div>
                     </div>
-                    <div className="content">
-                        <div className="text">
-                            <h2>Our Story</h2>
-                            <p>Founded with a passion for technology and innovation, Veltria started as a small team of
-                                dedicated
-                                professionals. Over the years, we have grown into a multifaceted company offering a broad range of
-                                services, from web and app development to training and digital marketing. Our journey has been
-                                fueled by our commitment to excellence and our drive to help businesses thrive in a
-                                digital-first
-                                world.</p>
-                        </div>
-                        <div className="image">
-                            <img src="https://cdn.glitch.global/02a02e56-c6dd-4845-b7d3-20bc8ccecb0c/about1.jpg?v=1726479185664" alt="Story Image"/>
-                        </div>
-                    </div>
-                    <div className="content">
-                        <div className="text">
-                            <h2>Our Values</h2>
-                            <p>At Veltria, we uphold values of integrity, innovation, and excellence in every project. Our
-                                values guide our
-                                approach to work, ensuring we deliver solutions that not only meet but exceed our clients
-                                expectations. We
-                                believe in transparency, collaboration, and a relentless pursuit of quality in all that we do.
-                            </p>
-                        </div>
-                        <div className="image">
-                            <img src="https://cdn.glitch.global/02a02e56-c6dd-4845-b7d3-20bc8ccecb0c/about2.jpg?v=1726479189792" alt="Values Image"/>
-                        </div>
-                    </div>
+                  
                     <div className="content">
                         <div className="text">
                             <h2>Why Choose Us</h2>
@@ -104,7 +76,7 @@ function AboutUs() {
                     </div>
 
                     
-                    <div className="content">
+                    {/* <div className="content">
                         <div className="text">
                             <h2>Our Vision</h2>
                             <p>Our vision is to be a global leader in the digital landscape, setting the standard for
@@ -116,7 +88,7 @@ function AboutUs() {
                         <div className="image">
                             <img src="https://cdn.glitch.global/02a02e56-c6dd-4845-b7d3-20bc8ccecb0c/about1.jpg?v=1726479185664" alt="Vision Image"/>
                         </div>
-                    </div>
+                    </div> */}
                 </div>
             </section>
             <section className="client-feedback">

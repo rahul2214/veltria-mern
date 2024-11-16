@@ -16,7 +16,7 @@ const logout = async () => {
         if(data.error) {
             throw new Error(data.error)
         }
-        localStorage.removeItem("chat-user")
+        localStorage.removeItem("user")
         setAuthUser(null)
 
     } catch (error) {

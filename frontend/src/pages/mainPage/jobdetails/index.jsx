@@ -45,6 +45,7 @@ const JobDetails = () => {
                     {job.jobrole} at {job.companyname}
                 </h2>
                 <div className="job-info">
+                    <p><strong>Job Type:</strong> {job.jobtype}</p>
                     <p><strong>Location:</strong> {job.location}</p>
                     <div className="job-description">
                         <h3>Job Description</h3>
@@ -56,7 +57,15 @@ const JobDetails = () => {
                         <p><strong>Mobile:</strong> <a href={`tel:${job.mobileNo}`}>{job.mobileNo || "N/A"}</a></p>
                         <p><strong>Job URL:</strong> <a href={job.joburl} target="_blank" rel="noopener noreferrer">{job.joburl || "N/A"}</a></p>
                     </div>
-                    <p><strong>Posted On:</strong> {new Date(job.createdAt).toLocaleDateString()}</p>
+                    <p >
+                        <strong>Posted On: </strong>
+                        {new Date(job.createdAt).toLocaleDateString('en-GB', {
+                            day: '2-digit',
+                            month: '2-digit',
+                            year: 'numeric',
+                        })}
+                    </p>
+
                 </div>
             </div>
             <Footer />

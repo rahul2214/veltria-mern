@@ -162,6 +162,15 @@ const CreateEmployee = () => {
                                 onChange={(e) => setInputs({ ...inputs, joburl: e.target.value })}
                             />
                         </div>
+                        <div className='input-group'>
+                            <label>LinkedIn</label>
+                            <input
+                                type="url"
+                                placeholder='Enter LinkedIN URL'
+                                value={inputs.linkedin}
+                                onChange={(e) => setInputs({ ...inputs, linkedin: e.target.value })}
+                            />
+                        </div>
 
                         <div>
                             <button className="submit-button" disabled={loading}>

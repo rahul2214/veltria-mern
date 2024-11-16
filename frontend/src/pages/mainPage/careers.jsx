@@ -1,4 +1,3 @@
-// components/Jobs.jsx
 import { useState, useMemo } from 'react';
 import useFetchEmployees from '../../hooks/useFetchEmployees';
 import EmployeeSearchInput from '../../components/SearchInput';
@@ -9,24 +8,28 @@ import Footer from './footer';
 const Jobs = () => {
     const { jobs, totalJobs, loading, error } = useFetchEmployees();
     const [searchTerm, setSearchTerm] = useState("");
-    const [sortField] = useState("createdAt"); // Field used for sorting
-    const [sortOrder] = useState("desc"); // Order set to descending for newest first
+    const [sortField] = useState("createdAt");
+    const [sortOrder] = useState("desc");
     const [selectedDomain, setSelectedDomain] = useState("");
+    const [selectedJobType, setSelectedJobType] = useState("");
     const navigate = useNavigate();
 
-    // Navigate to job details page
     const handleJobClick = (employee) => {
         const { _id } = employee;
         navigate(`/job-details/${_id}`);
     };
 
-    // Sort, filter, and search jobs
     const sortedEmployees = useMemo(() => {
         let sortedList = [...jobs];
 
         // Filter by domain
         if (selectedDomain) {
             sortedList = sortedList.filter(employee => employee.domain === selectedDomain);
+        }
+
+        // Filter by job type
+        if (selectedJobType) {
+            sortedList = sortedList.filter(employee => employee.jobtype === selectedJobType);
         }
 
         // Sort by field and order
@@ -53,14 +56,14 @@ const Jobs = () => {
             employee.location.toLowerCase().includes(searchTerm.toLowerCase()) ||
             employee.companyname.toLowerCase().includes(searchTerm.toLowerCase())
         );
-    }, [jobs, sortField, sortOrder, searchTerm, selectedDomain]);
+    }, [jobs, sortField, sortOrder, searchTerm, selectedDomain, selectedJobType]);
 
-    // Show loading or error states
     if (loading) return <div><p className="text-black">Loading...</p></div>;
     if (error) return <div><p className="text-red-600">{error}</p></div>;
 
-    // Extract unique domains for filtering
+    // Extract unique domains and job types
     const uniqueDomains = [...new Set(jobs.map(emp => emp.domain))];
+    const uniqueJobTypes = [...new Set(jobs.map(emp => emp.jobtype))];
 
     return (
         <div>
@@ -74,6 +77,23 @@ const Jobs = () => {
 
                     {/* Total Jobs Count */}
                     <h1 className="text-gray-700 mb-4">Total Jobs: {totalJobs}</h1>
+
+                    {/* Filter by Job Type */}
+                    <div className="flex justify-between items-center mt-4 mb-6">
+                        <label className="text-gray-700">
+                            Filter by Job Type:
+                            <select
+                                value={selectedJobType}
+                                onChange={(e) => setSelectedJobType(e.target.value)}
+                                className="ml-2 p-2 bg-white border rounded"
+                            >
+                                <option value="">All Job Types</option>
+                                {uniqueJobTypes.map(jobtype => (
+                                    <option key={jobtype} value={jobtype}>{jobtype}</option>
+                                ))}
+                            </select>
+                        </label>
+                    </div>
 
                     {/* Filter by Domain */}
                     <div className="flex justify-between items-center mt-4 mb-6">

@@ -56,6 +56,7 @@ const JobDetails = () => {
                         <p><strong>Email:</strong> <a href={`mailto:${job.email}`}>{job.email || "N/A"}</a></p>
                         <p><strong>Mobile:</strong> <a href={`tel:${job.mobileNo}`}>{job.mobileNo || "N/A"}</a></p>
                         <p><strong>Job URL:</strong> <a href={job.joburl} target="_blank" rel="noopener noreferrer">{job.joburl || "N/A"}</a></p>
+                        <p><strong>LinkedIn:</strong> <a href={job.linkedin} target="_blank" rel="noopener noreferrer">{job.linkedin || "N/A"}</a></p>
                     </div>
                     <p >
                         <strong>Posted On: </strong>

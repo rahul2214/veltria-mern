@@ -135,6 +135,7 @@ const EmployeeList = () => {
                                 <th className="w-1/4 px-4 py-2 text-black">Job role</th>
                                 <th className="w-1/4 px-4 py-2 text-black">No of Vacancies</th>
                                 <th className="w-1/4 px-4 py-2 text-black">Job Description</th>
+                                <th className="w-1/4 px-4 py-2 text-black">Job type</th>
                                 <th className="w-1/4 px-4 py-2 text-black">Job URL</th>
                                 <th className="w-1/4 px-4 py-2 text-black">Location</th>
                                 <th className="w-1/4 px-4 py-2 text-black">Email</th>
@@ -153,6 +154,9 @@ const EmployeeList = () => {
 </td>
                                     <td className="border px-4 py-2 text-black">
                                         {employee.jobdescription ? employee.jobdescription : "N/A"}
+                                    </td>
+                                    <td className="border px-4 py-2 text-black">
+                                        {employee.jobtype ? employee.jobtype : "N/A"}
                                     </td>
                                     <td className="border px-4 py-2 text-black">
                                         <a href={employee.joburl} target="_blank" rel="noopener noreferrer" className="text-blue-500 hover:underline">
